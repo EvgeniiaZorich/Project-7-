@@ -19,6 +19,9 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showCredits1))
+        
 
         guard let detailItem = detailItem else { return }
         let html = """
@@ -34,7 +37,14 @@ class DetailViewController: UIViewController {
         """
         
         webView.loadHTMLString(html, baseURL: nil)
+     
     }
+    
+    @objc func showCredits1() {
+           let ac = UIAlertController(title: "Credits", message: "The data comes from the We The People API of the Whitehouse", preferredStyle: .alert)
+           ac.addAction(UIAlertAction(title: "OK", style: .default))
+           present(ac, animated: true)
+       }
     
 
     /*
